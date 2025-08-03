@@ -49,6 +49,7 @@ int lightsensor(void);
 void udelay(unsigned int delay_in_us);
 void setLEDColor(int is_red, int is_green, int is_blue);
 
+//HERE IS SOME CHANGES
 void RTC_Init(void);
 void RTC_SetPrescaler(unsigned int pclk_hz);
 
