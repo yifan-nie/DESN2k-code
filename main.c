@@ -113,28 +113,28 @@ int main(void) {
 
 		//sample from light sensor
 		light = lightsensor();
-		if (MIN >= 31 && SEC < 35) {
-    // After 7AM but before 8AM: Only allow opening blinds if it's bright
+		if (MIN >= 31 && MIN < 33) {
+    		// After 7AM but before 8AM: Only allow opening blinds if it's bright
 			if (light == 1 && blindState != 1) {
-        FIO2SET = (1 << 1);  // Turn on LED at P2.1
-        setLEDColor(0, 0, 1); // Blue
-        udelay(100000);
-        setLEDColor(0, 1, 0); // Green
-        udelay(100000);
-        setLEDColor(1, 0, 0); // Red
-        blindState = 1;
-				}
-			} else if (SEC >= 36 && SEC < 40) {
-				// After 7PM or before 8PM: Only allow closing blinds if it's dark
-				else if (light == 0 && blindState != 0) {
-        setLEDColor(1, 0, 0); // Red
-        udelay(100000);
-        setLEDColor(0, 1, 0); // Green
-        udelay(100000);
-        setLEDColor(0, 0, 1); // Blue
-        blindState = 0;
-				}
-		//}
+				FIO2SET = (1 << 1);  // Turn on LED at P2.1
+				setLEDColor(0, 0, 1); // Blue
+				udelay(100000);
+				setLEDColor(0, 1, 0); // Green
+				udelay(100000);
+				setLEDColor(1, 0, 0); // Red
+				blindState = 1;
+			}
+		} else if (MIN >= 33 && MIN < 40) {
+			// After 7PM or before 8PM: Only allow closing blinds if it's dark
+			else if (light == 0 && blindState != 0) {
+				setLEDColor(1, 0, 0); // Red
+				udelay(100000);
+				setLEDColor(0, 1, 0); // Green
+				udelay(100000);
+				setLEDColor(0, 0, 1); // Blue
+				blindState = 0;
+			}
+		}
 	}
 }
 
